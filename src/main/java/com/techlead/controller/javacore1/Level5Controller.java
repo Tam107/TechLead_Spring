@@ -12,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -22,6 +23,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/core-java-1/level-5")
 @Tag(name = "Core Java 1 - Level 5", description = "APIs for Core Java 1 - Level 5")
+@PreAuthorize("hasAnyRole('ADMIN', 'USER')") // Only allow ADMIN and USER roles to access
+
 public class Level5Controller {
 
     private final Level5Service level5Service;
